@@ -1,7 +1,6 @@
 package api;
 
 import com.fasterxml.jackson.databind.DeserializationFeature;
-import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import model.City;
 import utils.EnvVariables;
@@ -11,6 +10,9 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.text.SimpleDateFormat;
+import java.time.Instant;
+import java.util.Date;
 
 public class WeatherAPI {
 
@@ -27,8 +29,6 @@ public class WeatherAPI {
         City[] cities = mapper.readValue(response, City[].class);
         return cities[0];
     }
-
-
 
 
     private static String sendGET(String requestURL) throws IOException {
@@ -51,6 +51,10 @@ public class WeatherAPI {
         } else {
             return "GET request did not work";
         }
+    }
+
+    private String getCurrrentDate() {
+        return Long.toString(Instant.now().getEpochSecond());
     }
 
 }
