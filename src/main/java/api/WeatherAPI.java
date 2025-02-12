@@ -20,8 +20,7 @@ import java.util.Map;
 /*TODO
        3) Object Data presentation
        4) Transfer all testing to package mains
-       5) Swagger documentation
-
+       5) Documentation
 */
 
 public class WeatherAPI {
@@ -31,6 +30,12 @@ public class WeatherAPI {
     private static final String GEOCODING_API_URL = "http://api.openweathermap.org/geo/1.0/direct?q={City}&limit=1&appid={API key}";
     private static final int DAYS_FOR_DISPLAY = 5;
 
+    /**
+     * Returns an Object of type City with coordinates longitude and latitude
+     *
+     * @param  cityName  city name in String format
+     * @return           City object with name,longitude and latitude
+     */
     public City getCity(String cityName) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         String url = getCoordinatesRequestURL(cityName);
