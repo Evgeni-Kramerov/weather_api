@@ -1,19 +1,21 @@
 import api.WeatherAPI;
 import model.City;
-import utils.EnvVariables;
 
 import java.io.IOException;
-import java.text.DecimalFormat;
-import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.util.Date;
 
+/*TODO 2) Get last 30 days from API
+       3) Object Data presentation
+
+
+*/
 public class Main {
     public static void main(String[] args) throws IOException {
         WeatherAPI weatherAPI = new WeatherAPI();
-        City city = weatherAPI.getCity("London");
+        City city = weatherAPI.getCity("Haifa");
 
 
+        System.out.println(city);
 
         long unixTimestamp = Instant.now().getEpochSecond();
 

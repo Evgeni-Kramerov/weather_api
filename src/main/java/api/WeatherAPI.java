@@ -10,20 +10,18 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
-import java.text.SimpleDateFormat;
 import java.time.Instant;
-import java.util.Date;
 
 public class WeatherAPI {
 
     private static final String API_KEY = EnvVariables.API_KEY;
     private static final String API_URL = "https://api.openweathermap.org/data/3.0/onecall?lat=33.44&lon=-94.04&exclude=hourly,daily&appid=";
-    private static final String GEOCODING_API_URL = "http://api.openweathermap.org/geo/1.0/direct?q=London&limit=1&appid=";
+    private static final String GEOCODING_API_URL = "http://api.openweathermap.org/geo/1.0/direct?q={City}&limit=1&appid=";
 
 
     public City getCity(String cityName) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
-        String url = GEOCODING_API_URL + API_KEY;
+        String url = getCoordinatesRequestURL(cityName);
         String response = sendGET(url);
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
         City[] cities = mapper.readValue(response, City[].class);
@@ -56,5 +54,12 @@ public class WeatherAPI {
     private String getCurrrentDate() {
         return Long.toString(Instant.now().getEpochSecond());
     }
+
+    private String getCoordinatesRequestURL(String cityName) {
+        String template = GEOCODING_API_URL + API_KEY;
+        return template.replace("{City}", cityName);
+
+    }
+
 
 }
