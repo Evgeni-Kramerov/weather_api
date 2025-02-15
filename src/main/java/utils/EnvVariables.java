@@ -5,7 +5,7 @@ import java.util.Properties;
 
 //Helper class to get API_KEY from .env file not to store it in code
 
-public class EnvVariables {
+public final class EnvVariables {
     static final Properties properties = new Properties();
     static final File propertiesFile = new File(".env");
 
