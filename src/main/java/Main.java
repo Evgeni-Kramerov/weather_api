@@ -1,4 +1,4 @@
-import api.WeatherAPI;
+import utils.WeatherAPI;
 import model.City;
 import model.User;
 import utils.JsonMapping;
@@ -13,8 +13,6 @@ public class Main {
         User user1 = new User("Test_User");
         user1.addCity(city1);
         user1.addCity(city2);
-
-
         View.displayWeather(user1);
 
     }
