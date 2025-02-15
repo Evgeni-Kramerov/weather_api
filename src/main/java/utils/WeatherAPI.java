@@ -1,7 +1,6 @@
-package api;
+package utils;
 
 import model.City;
-import utils.EnvVariables;
 
 import java.io.BufferedReader;
 import java.io.IOException;

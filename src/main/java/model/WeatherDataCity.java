@@ -1,6 +1,6 @@
 package model;
 
-import api.WeatherAPI;
+import utils.WeatherAPI;
 import utils.JsonMapping;
 
 import java.io.IOException;

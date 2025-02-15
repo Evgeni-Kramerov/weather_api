@@ -1,7 +1,6 @@
 package utils;
 
 
-import api.WeatherAPI;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.JsonNode;
@@ -9,7 +8,6 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import model.City;
 
 import java.io.IOException;
-import java.time.LocalDate;
 
 public final class JsonMapping {
 
