@@ -10,7 +10,7 @@ import java.util.List;
 import model.City;
 import model.User;
 
-public class DataBaseConnect {
+public class MySQLConnection {
 //	Adding String and double parameters to the database
 	public static void DB_Add_CityString (String username, String city, double lattitude, double longtitude) 
 			throws SQLException {
