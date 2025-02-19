@@ -47,7 +47,6 @@ public class View {
 
     public User chooseExistingUserMenu(Scanner scanner) {
         List<User> existingUsers = new ArrayList<>();
-        //TODO Database get Users
         try {
             existingUsers = SQLiteConnection.DB_SelectUsersCities();
         }
