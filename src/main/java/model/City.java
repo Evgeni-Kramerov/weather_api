@@ -51,4 +51,25 @@ public class City {
                 ", longitude=" + longtitude +
                 '}';
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        boolean result;
+        if((obj == null) || (getClass() != obj.getClass())){
+            result = false;
+        }
+        else{
+            City otherCity = (City) obj;
+            result = name.equals(otherCity.name)
+                    && (longtitude == otherCity.longtitude)
+                    && (lattitude == otherCity.lattitude);
+        } // end else
+
+        return result;
+    }
+
+    @Override
+    public int hashCode() {
+        return  (int) Math.round(this.lattitude*32 + this.longtitude*56);
+    }
 }

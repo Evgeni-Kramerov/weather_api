@@ -1,19 +1,49 @@
-import utils.WeatherAPI;
-import model.City;
 import model.User;
-import utils.JsonMapping;
 import view.View;
 
 import java.io.IOException;
+import java.util.Scanner;
+
+/*TODO 1) Get USER from DB
+       2) UI Normalise
+       3) All errors and exceptions
+*/
 
 public class Main {
     public static void main(String[] args) throws IOException {
-        City city1 = JsonMapping.getCity(WeatherAPI.requestCity("London"));
-        City city2 = JsonMapping.getCity(WeatherAPI.requestCity("Haifa"));
-        User user1 = new User("Test_User");
-        user1.addCity(city1);
-        user1.addCity(city2);
-        View.displayWeather(user1);
+        View view = new View();
+
+        view.printWelcomeMenu();
+        String answer = "";
+        try (Scanner scan = new Scanner(System.in)){
+            boolean running = true;
+            while(running) {
+                answer = scan.nextLine().toLowerCase();
+                switch(answer) {
+                    case "1":
+                        //Existing User
+                        User existingUser = view.chooseExistingUserMenu(scan);
+                        view.setActiveUser(existingUser);
+                        view.renderViewForUser();
+                        break;
+                    case "2":
+                        //New User
+                        User newUser = view.createNewUser(scan);
+                        view.setActiveUser(newUser);
+                        view.renderViewForUser();
+                        break;
+                    case "3":
+                        //Exit
+                        running = false;
+                        break;
+                    default:
+                        System.out.println("Couldn't read that, please try again?");
+                        continue;
+                }
+                view.printWelcomeMenu();
+            }
+            System.out.println("Goodbye!");
+        }
 
     }
 
