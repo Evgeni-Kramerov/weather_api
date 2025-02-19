@@ -4,10 +4,6 @@ import view.View;
 import java.io.IOException;
 import java.util.Scanner;
 
-/*TODO 1) Get USER from DB
-       2) UI Normalise
-       3) All errors and exceptions
-*/
 
 public class Main {
     public static void main(String[] args) throws IOException {

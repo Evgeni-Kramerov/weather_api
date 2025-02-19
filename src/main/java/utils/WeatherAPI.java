@@ -57,7 +57,7 @@ public final class WeatherAPI {
             // print result
             return response.toString();
         } else {
-            //TODO added exception throwing
+            //TODO add exception throwing
             return "GET request did not work";
         }
     }
