@@ -14,8 +14,15 @@ public final class JsonMapping {
     public static City getCity(String jsonResponse) throws JsonProcessingException {
         ObjectMapper mapper = new ObjectMapper();
         mapper.configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
-        City[] cities = mapper.readValue(jsonResponse, City[].class);
-        return cities[0];
+        try {
+            City[] cities = mapper.readValue(jsonResponse, City[].class);
+            return cities[0];
+        }
+        catch (Exception e) {
+            throw e;
+        }
+
+
     }
 
     public static Double getTemperature(String jsonResponse) throws JsonProcessingException {

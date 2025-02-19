@@ -9,31 +9,31 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import java.time.LocalDate;
 
-/*TODO 1) Single Responsibility - just to return JSON
-       2) Jason parsing in other package - in utils
-       3) Business Logic in third class
-       4) Object Data presentation
-       5) Documentation SWAGGER
-*/
 
 public final class WeatherAPI {
 
     private static final String API_KEY = EnvVariables.API_KEY;
-    private static final String HISTORIC_API_URL = "https://api.openweathermap.org/data/3.0/onecall/day_summary?lat={lat}&lon={lon}&date={date}&appid={API key}";
+    private static final String HISTORIC_API_URL = "https://api.openweathermap.org/data/3.0/onecall/day_summary?lat={lat}&lon={lon}&date={date}&units=metric&appid={API key}";
     private static final String GEOCODING_API_URL = "http://api.openweathermap.org/geo/1.0/direct?q={City}&limit=1&appid={API key}";
 
     /**
-     * TODO Rewrite explanation
-     * Returns String with Json of type City with coordinates longitude and latitude
+     * Returns JSON String with geocoding info on selected CITY
      *
      * @param  cityName  city name in String format
-     * @return           City object with name,longitude and latitude
+     * @return           JSON String with response from server
      */
     public static String requestCity(String cityName) throws IOException {
         String url = getCoordinatesRequestURL(cityName);
         return sendGET(url);
     }
 
+    /**
+     * Returns JSON String with temperature info for selected city for selected date
+     *
+     * @param  city  city name in String format
+     * @param  date  date in local date format
+     * @return       JSON String with response from server
+     */
     public static String requestHistoricalData(City city, LocalDate date) throws IOException {
         String url = getHistoricalDataRequest(city, date);
         return sendGET(url);
